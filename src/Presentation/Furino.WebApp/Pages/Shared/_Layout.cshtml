@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Furino.WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Furino.WebApp.styles.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center w-100">
+                    <!-- Cột logo -->
+                    <div class="d-flex align-items-center">
+                        <img src="/img/logo.png" alt="logo" class="me-2" style="height: 40px;" />
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">Furnio</a>
+                    </div>
+
+                    <!-- Toggle button (chỉ hiển thị trên màn hình nhỏ) -->
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Menu collapse -->
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <!-- Cột menu -->
+                        <ul class="navbar-nav mx-auto flex-row justify-content-between" style="gap: 17%;">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Shop">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Contact</a>
+                            </li>
+                        </ul>
+
+                        <!-- Cột icon -->
+                        <ul class="navbar-nav ms-auto flex-row" style="gap: 18%;">
+                            <li class="nav-item">
+                                <i class="bi bi-person-exclamation"></i>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-search"></i>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-heart"></i>
+                            </li>
+                            <li class="nav-item">
+                                <i class="bi bi-cart3"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+ll
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Furino.WebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

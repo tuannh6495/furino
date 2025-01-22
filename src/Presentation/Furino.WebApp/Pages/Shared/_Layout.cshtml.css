@@ -59,16 +59,23 @@
 }
 .footer {
   height: 505px;
-  margin: 45px 100px 35px;
+  margin: 45px 100px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
+  border-bottom: #d9d9d9 solid 1px;
+  padding-bottom: 50px;
+  flex: 0;
 }
 
 .info-prod {
   width: 285px;
+  flex: 1;
+  flex: 0 0 20%;
 }
 
 .funiro {
@@ -85,10 +92,24 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  display: block;
+}
+
+.links-help-news {
+  display: flex;
+  flex: 2;
+  justify-content: space-around;
+}
+
+.links-help-news-position {
   margin-top: 50px;
 }
 
-.links-title {
+.item-margin-top {
+  margin-top: 46px;
+}
+
+.links-help-news-title {
   color: #9f9f9f;
   font-size: 16px;
   font-style: normal;
@@ -103,6 +124,70 @@
 
 .links-nav-item {
   list-style-type: none;
+}
+
+.links-help-news-title {
+  color: #9f9f9f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.helper-nav {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.helper-nav-item {
+  list-style-type: none;
+}
+
+.links-help-news-title {
+  color: #9f9f9f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.email-input {
+  outline: none;
+  border: none;
+  border-bottom: 1.3px solid #000;
+  color: #9f9f9f;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.submit-btn {
+  border: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1.3px solid #000;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.footer-copryright {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.footer-copryright p {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 /* end */

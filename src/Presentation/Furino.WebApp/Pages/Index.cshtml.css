@@ -1,0 +1,86 @@
+﻿.home-page {
+}
+
+.hp-background-top {
+  height: 710px;
+  background: url(/img/backgr-top.png) lightgray 50% / cover no-repeat;
+}
+
+.new-arrival {
+  width: 643px;
+  height: 443px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fff3e3;
+}
+
+.new-arrival-item{
+    margin-left: 40px;
+}
+
+.new-arrival .new-arrival-item:first-child{
+    margin-top: 20px;
+}
+
+.new-arrival .new-arrival-item:last-child{
+    margin-top: 30px;
+}
+.new-arrival span {
+  color: var(--Font-Color, #333);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 3px;
+  margin-left: 40px;
+}
+
+.new-arrival h2 {
+  width: 559px;
+  height: 127px;
+  flex-shrink: 0;
+  color: var(--Primary, #b88e2f);
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 65px; /* 125% */
+  margin-left: 40px;
+}
+
+.new-arrival p {
+  width: 546px;
+  height: 52px;
+  flex-shrink: 0;
+  color: var(--Font-Color, #333);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  margin-left: 40px;
+}
+
+.new-arrival button {
+  display: inline-flex;
+  padding: 25px 72px;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--Primary, #b88e2f);
+  border-style: none;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-left: 40px;
+}
+
+.hp-browse-range {
+}
+.hp-our-products {
+}
+.hp-beautiful-ro {
+}
+.hp-furniture {
+}

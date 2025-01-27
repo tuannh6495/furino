@@ -2,28 +2,35 @@
 }
 
 .hp-background-top {
+  position: relative;
   height: 710px;
   background: url(/img/backgr-top.png) lightgray 50% / cover no-repeat;
 }
 
 .new-arrival {
+  position: absolute;
+  padding-top: 60px;
+  padding-right: 55px;
   width: 643px;
   height: 443px;
+  top: 15%;
+  right: 5%;
   flex-shrink: 0;
   border-radius: 10px;
   background: #fff3e3;
+  border: 10px;
 }
 
-.new-arrival-item{
-    margin-left: 40px;
+.new-arrival-item {
+  margin-left: 40px;
 }
 
-.new-arrival .new-arrival-item:first-child{
-    margin-top: 20px;
+.new-arrival .new-arrival-item:first-child {
+  margin-top: 20px;
 }
 
-.new-arrival .new-arrival-item:last-child{
-    margin-top: 30px;
+.new-arrival .new-arrival-item:last-child {
+  margin-top: 30px;
 }
 .new-arrival span {
   color: var(--Font-Color, #333);
@@ -77,6 +84,52 @@
 }
 
 .hp-browse-range {
+  margin: 40px 125px;
+}
+
+.hp-browse-range-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.broswe-range-title {
+  color: var(--Font-Color, #333);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  align-items: center;
+}
+
+.broswe-range-description {
+  width: 559px;
+  height: 28.711px;
+  flex-shrink: 0;
+}
+
+.broswe-range-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.broswe-range-card-item-img {
+  border-radius: 10px;
+}
+
+.broswe-range-card-item-title {
+  color: var(--Font-Color, #333);
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
 }
 .hp-our-products {
 }

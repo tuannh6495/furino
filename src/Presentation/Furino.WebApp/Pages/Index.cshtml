@@ -55,7 +55,11 @@
 
                         $.get("/Index?handler=LoadMore&skip=" + skip, function (data) {
                             console.log("Dữ liệu nhận được:", data); // Kiểm tra dữ liệu trong console
-
+                            if(data.success === false) {
+                                console.warn("Dữ liệu rỗng hoặc không hợp lệ!");
+                                $("#load-more").hide();
+                                return;
+                            }
                             if (!data || data.trim().length === 0) {
                                 console.warn("Dữ liệu rỗng hoặc không hợp lệ!");
                                 $("#load-more").hide();

@@ -60,70 +60,23 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         Products = conext_products
-                       .OrderBy(p => p.Id)
-                       .Take(CurrentPage * PageSize) // Tăng số lượng sản phẩm mỗi lần load
-                       .ToList();
+            .OrderBy(p => p.Id)
+            .Take(CurrentPage * PageSize) // Tăng số lượng sản phẩm mỗi lần load
+            .ToList();
     }
 
     public IActionResult OnGetLoadMore(int skip)
     {
-        try
+        var moreProducts = conext_products
+            .OrderBy(p => p.Id)
+            .Skip(skip)
+            .Take(PageSize)
+            .ToList();
+        if (!moreProducts.Any())
         {
-            var products = conext_products
-                .OrderBy(p => p.Id)
-                .Skip(skip)
-                .Take(PageSize)
-                .ToList();
-
-            if (!products.Any())
-            {
-                return new JsonResult(new { success = false, message = "Hết sản phẩm!" });
-            }
-
-            // Render từng sản phẩm và trả về HTML
-            string html = "";
-            foreach (var product in products)
-            {
-                html += RenderPartialViewToString("_ProductCard", product);
-            }
-
-            return Content(html, "text/html"); // Trả về HTML cho jQuery AJAX
+            return Content(""); // Trả về chuỗi rỗng nếu không còn sản phẩm
         }
-        catch (Exception ex)
-        {
-            return new JsonResult(new { success = false, message = "Lỗi Server", error = ex.Message });
-        }
-    }
-    private string RenderPartialViewToString(string viewName, object model)
-    {
-        var httpContext = HttpContext.RequestServices.GetRequiredService<IHttpContextAccessor>().HttpContext;
-        var actionContext = new ActionContext(httpContext, httpContext.GetRouteData(), new PageActionDescriptor());
-
-        var serviceProvider = httpContext.RequestServices;
-        var viewEngine = serviceProvider.GetRequiredService<ICompositeViewEngine>();
-        var tempDataProvider = serviceProvider.GetRequiredService<ITempDataProvider>();
-        var viewDataDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary()) { Model = model };
-        var tempDataDictionary = new TempDataDictionary(httpContext, tempDataProvider);
-
-        using (var writer = new StringWriter())
-        {
-            var viewResult = viewEngine.FindView(actionContext, viewName, false);
-            if (viewResult.View == null)
-            {
-                throw new ArgumentNullException($"{viewName} không tìm thấy!");
-            }
-
-            var viewContext = new ViewContext(
-                actionContext,
-                viewResult.View,
-                viewDataDictionary,
-                tempDataDictionary,
-                writer,
-                new HtmlHelperOptions()
-            );
-
-            viewResult.View.RenderAsync(viewContext).Wait();
-            return writer.ToString();
-        }
+        // Trả về Partial View wrapper chứa danh sách sản phẩm
+        return Partial("_ProductCardList", moreProducts);
     }
 }

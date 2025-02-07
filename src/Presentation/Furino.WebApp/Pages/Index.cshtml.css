@@ -135,9 +135,11 @@
 .hp-our-products {
   width: 1236px;
   margin: 10px 102px;
+  direction: column;
 }
 
-.hp-our-products h2 {
+.our-products-title {
+  margin: auto;
   color: var(--Color-Gray-1, #3a3a3a);
   text-align: center;
   font-size: 40px;
@@ -152,6 +154,26 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.hp-our-products-btn {
+  margin: auto;
+  width: 245px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid var(--Primary, #b88e2f);
+  background: #fff;
+
+  color: var(--Primary, #B88E2F);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .hp-beautiful-ro {
 }
 .hp-furniture {

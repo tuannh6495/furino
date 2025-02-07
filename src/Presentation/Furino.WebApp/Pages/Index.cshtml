@@ -39,72 +39,40 @@
     </div>
     <div class="hp-our-products">
         <h2 class="our-products-title">Our Products</h2>
-<div class="our-products-list">
-    @foreach (var product in Model.Products)
-    {
-        <partial name="_ProductCard" model="product" />
-    }
-</div>
-<button id="load-more" data-skip="8">Xem thêm</button>
+        <div class="our-products-list">
+            @foreach (var product in Model.Products)
+            {
+                <partial name="_ProductCard" model="product" />
+            }
+        </div>
+        <button id="load-more" data-skip="8">Xem thêm</button>
+        @section Scripts {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#load-more").click(function () {
+                        var skip = $(this).data("skip");
 
+                        $.get("/Index?handler=LoadMore&skip=" + skip, function (data) {
+                            console.log("Dữ liệu nhận được:", data); // Kiểm tra dữ liệu trong console
 
-@section Scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#load-more").click(function () {
-                var skip = $(this).data("skip");
+                            if (!data || data.trim().length === 0) {
+                                console.warn("Dữ liệu rỗng hoặc không hợp lệ!");
+                                $("#load-more").hide();
+                                return;
+                            }
 
-                $.get("/Index?handler=LoadMore&skip=" + skip, function (data) {
-                    if (!data || data.length === 0) {
-                        $("#load-more").hide();
-                        return;
-                    }
+                            $(".our-products-list").append(data);
+                            $("#load-more").data("skip", skip + 8);
+                        }).fail(function (xhr, status, error) {
+                            console.error("Lỗi AJAX:", xhr.responseText);
+                            alert("Lỗi khi tải dữ liệu. Vui lòng thử lại!");
+                        });
 
-                    let newContent = "";
-
-                    data.forEach(function (product) {
-                        var discountBadge = "";
-                        if (product.percentDiscount > 0) {
-                            discountBadge = `<span class="product-badge discount-badge">-${Math.round(product.percentDiscount, 2)}%</span>`;
-                        } else if (product.isNew) {
-                            discountBadge = `<span class="product-badge new-badge">New</span>`;
-                        }
-
-                        var oldPriceHtml = product.price != product.oldPrice
-                            ? `<p class="product-price-old">Rp ${product.oldPrice}</p>`
-                            : "";
-
-                        newContent += `
-                            <div class="product-card">
-                                <a href="/Products/Details?id=${product.id}">
-                                    ${discountBadge}
-                                    <img src="${product.imageUrl}" alt="${product.name}" class="product-image" />
-                                </a>
-                                <div class="product-info">
-                                    <h3 class="product-name">${product.name}</h3>
-                                    <p class="product-description">${product.description}</p>
-                                    <div class="product-prices">
-                                        <p class="product-price">Rp ${product.price}</p>
-                                        ${oldPriceHtml}
-                                    </div>
-                                </div>
-                            </div>`;
                     });
-
-                    // Append toàn bộ sản phẩm mới vào danh sách
-                    $(".our-products-list").append(newContent);
-
-                    // Cập nhật skip để load tiếp sản phẩm
-                    $("#load-more").data("skip", skip + data.length);
-
-                }).fail(function () {
-                    alert("Lỗi khi tải dữ liệu. Vui lòng thử lại!");
                 });
-            });
-        });
-    </script>
-}
+            </script>
+        }
     </div>
     <div class="hp-beautiful-ro"></div>
     <div class="hp-furniture"></div>

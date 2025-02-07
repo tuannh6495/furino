@@ -1,7 +1,7 @@
 @model Furino.WebApp.Models.Product
 
 <div class="product-card">
-    <a href="@Url.Page("/Products/Details", new { id = Model.Id })">
+    <a href="/Products/Details?id=@Model.Id">
         @if (Model.PercentDiscount > 0)
         {
             <span class="product-badge discount-badge">-@Math.Round(@Model.PercentDiscount, 2)%</span>

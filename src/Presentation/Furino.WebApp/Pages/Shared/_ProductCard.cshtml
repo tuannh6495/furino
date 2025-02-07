@@ -1,0 +1,26 @@
+@model Furino.WebApp.Models.Product
+
+<div class="product-card">
+    <a href="@Url.Page("/Products/Details", new { id = Model.Id })">
+        @if (Model.PercentDiscount > 0)
+        {
+            <span class="product-badge discount-badge">-@Math.Round(@Model.PercentDiscount, 2)%</span>
+        }
+        else if (Model.IsNew)
+        {
+            <span class="product-badge new-badge">New</span>
+        }
+        <img src="@Model.ImageUrl" alt="@Model.Name" class="product-image" />
+    </a>
+    <div class="product-info">
+        <h3 class="product-name">@Model.Name</h3>
+        <p class="product-description">@Model.Description</p>
+        <div class="product-prices">
+            <p class="product-price">Rp @Model.Price</p>
+            @if (Model.Price != Model.OldPrice)
+            {
+                <p class="product-price-old">Rp @Model.OldPrice</p>
+            }
+        </div>
+    </div>
+</div>
